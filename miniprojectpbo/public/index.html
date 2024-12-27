@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Pengelolaan Kapal Nelayan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Aplikasi Pengelolaan Kapal Nelayan</h1>
+
+        <!-- Form untuk menambah kapal -->
+        <form id="kapalForm">
+            <input type="text" id="nama_kapal" placeholder="Nama Kapal" required>
+            <input type="text" id="jenis_kapal" placeholder="Jenis Kapal" required>
+            <input type="number" id="kapasitas_muatan" placeholder="Kapasitas Muatan" required>
+            <button type="submit">Tambah Kapal</button>
+        </form>
+        
+
+        <h2>Daftar Kapal</h2>
+        <ul id="kapalList"></ul>
+    </div>
+
+    <script>
+        // Mengambil data kapal dari API dan menampilkannya
+        async function getKapal() {
+            const response = await fetch('/kapal');
+            const kapalList = await response.json();
+            const kapalListElement = document.getElementById('kapalList');
+            kapalListElement.innerHTML = '';
+            kapalList.forEach(kapal => {
+                const li = document.createElement('li');
+                li.textContent = `${kapal.nama_kapal} - ${kapal.jenis_kapal} - Kapasitas: ${kapal.kapasitas_muatan}`;
+                kapalListElement.appendChild(li);
+            });
+        }
+
+        // Menambahkan kapal baru
+        document.getElementById('kapalForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nama_kapal = document.getElementById('nama_kapal').value;
+            const jenis_kapal = document.getElementById('jenis_kapal').value;
+            const kapasitas_muatan = document.getElementById('kapasitas_muatan').value;
+
+            const response = await fetch('/kapal', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nama_kapal,
+                    jenis_kapal,
+                    kapasitas_muatan
+                })
+            });
+
+            if (response.ok) {
+                getKapal();
+            } else {
+                alert('Gagal menambahkan kapal');
+            }
+        });
+
+        // Ambil data kapal saat halaman dimuat
+        getKapal();
+    </script>
+</body>
+</html>

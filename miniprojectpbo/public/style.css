@@ -1,0 +1,131 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #1e1e2f;
+  color: #f5f5f7;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Container Styling */
+.container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #2a2a40;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00d4ff;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+input, button {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input {
+  background-color: #3b3b52;
+  color: #f5f5f7;
+  border: 1px solid #4a4a6a;
+}
+
+input:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 5px #00d4ff;
+}
+
+button {
+  background: linear-gradient(45deg, #00d4ff, #0078ff);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #0078ff, #00d4ff);
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.5);
+}
+
+/* List Styling */
+ul {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+li {
+  background: #3b3b52;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  transform: scale(1.02);
+  background-color: #444466;
+}
+
+li span {
+  font-size: 0.9rem;
+  color: #cfcfcf;
+}
+
+li button {
+  padding: 8px 10px;
+  background: #ff4d4d;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+li button:hover {
+  background: #ff1a1a;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
